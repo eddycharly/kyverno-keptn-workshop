@@ -11,3 +11,5 @@ keptn:
     postDeploymentTasks: []
     postDeploymentEvaluations: []
     promotionTasks: []
+prometheus:
+  enabled: true

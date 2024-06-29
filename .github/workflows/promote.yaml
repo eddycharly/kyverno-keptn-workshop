@@ -6,9 +6,11 @@ on:
         description: 'OTEL parent trace'
         required: false
         type: string
+
 permissions:
   contents: write
   pull-requests: write
+
 jobs:
   promote:
     runs-on: ubuntu-latest
