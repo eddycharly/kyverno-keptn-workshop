@@ -10,7 +10,7 @@ We will run a K6 Load Test as Post-Deployment Task to generate load on the appli
 
 See `gitops/dev/demo-app-dev/templates/podmonitor.yaml` for the Prometheus PodMonitor configuration.
 
-## Excercise
+## Exercise
 
 ### Create a keptnMetricsProvider
 

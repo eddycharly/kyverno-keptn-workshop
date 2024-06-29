@@ -5,3 +5,9 @@ service:
 repo:
   name: heckelmann/kyverno-keptn-workshop
   revision: main
+keptn:
+  appContext:
+    preDeploymentTasks: []
+    postDeploymentTasks: []
+    postDeploymentEvaluations: []
+    promotionTasks: []

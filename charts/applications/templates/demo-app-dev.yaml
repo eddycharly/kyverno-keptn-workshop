@@ -9,12 +9,22 @@ spec:
   project: default
   source:
     path: charts/demo-app
-    repoURL: {{ .Values.repo.url }}
+    repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
     helm:
       valuesObject:
+        serviceVersion: v2
+        repo:
+          name: {{ .Values.repo.name }}
+          revision: {{ .Values.repo.revision }}
         service:
           nodePort: 30103
+        keptn:
+          appContext:
+            preDeploymentTasks:
+              - maintenance-window-check
+            postDeploymentTasks:
+              - load-test
       parameters:
         - name: commitID
           value: $ARGOCD_APP_REVISION
