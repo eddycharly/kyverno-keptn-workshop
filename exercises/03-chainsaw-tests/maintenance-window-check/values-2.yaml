@@ -1,0 +1,10 @@
+prometheus:
+  enabled: false
+  
+service:
+  nodePort: 32123
+
+keptn:
+  appContext:
+    preDeploymentTasks:
+      - maintenance-window-check

@@ -1,0 +1,15 @@
+serviceVersion: v1
+
+repo:
+  name: eddycharly/kyverno-keptn-workshop
+  
+prometheus:
+  enabled: false
+  
+service:
+  nodePort: 32123
+
+keptn:
+  appContext:
+    preDeploymentTasks:
+      - maintenance-window-check

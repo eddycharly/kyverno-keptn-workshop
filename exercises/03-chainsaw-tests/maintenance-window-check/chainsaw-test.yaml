@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kyverno/chainsaw/main/.schemas/json/test-chainsaw-v1alpha1.json
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: maintenance-window-check
+spec:
+  steps:
+  - try:
+    - script:
+        content: |
+          helm template -n $NAMESPACE ../../../charts/demo-app --values ./values-1.yaml | kubectl apply -n $NAMESPACE -f -
+    - assert:
+        resource:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnAppContext
+          metadata:
+            name: demo-app
+          spec:
+            preDeploymentTasks:
+            - maintenance-window-check
+    - assert:
+        resource:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnApp
+          metadata:
+            labels:
+              app.kubernetes.io/managed-by: keptn
+            name: demo-app
+          spec:
+            revision: 1
+            version: v1
+            workloads:
+            - name: demo-app
+              version: v1
+    - script:
+        content: |
+          helm template -n $NAMESPACE ../../../charts/demo-app --values ./values-1.yaml --values ./values-2.yaml | kubectl apply -n $NAMESPACE -f -
+    - assert:
+        resource:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnTask
+          spec:
+            checkType: pre
+            context:
+              appName: demo-app
+              appVersion: v1
+              objectType: App
+              taskType: pre
+              workloadName: ""
+            taskDefinition: maintenance-window-check
+          status:
+            status: Succeeded
