@@ -13,7 +13,6 @@ spec:
     targetRevision: {{ .Values.repo.revision }}
     helm:
       valuesObject:
-        serviceVersion: v2
         repo:
           name: {{ .Values.repo.name }}
           revision: {{ .Values.repo.revision }}
@@ -25,6 +24,8 @@ spec:
               - maintenance-window-check
             postDeploymentTasks:
               - load-test
+      valueFiles:
+        - ../../gitops/dev/demo-app/values.yaml
       parameters:
         - name: commitID
           value: $ARGOCD_APP_REVISION
