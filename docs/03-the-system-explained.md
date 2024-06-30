@@ -65,7 +65,6 @@ spec:
   python:
     httpRef: 
       url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py
-    cmdParameters: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/data/maintenance.json
 ```
 
 To assign this KeptnTask to a KeptnApp, you need to add it to the `KeptnAppContext`, as shown in the example above.

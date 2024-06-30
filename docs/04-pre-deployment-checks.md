@@ -30,10 +30,9 @@ spec:
   python:
     httpRef: 
       url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py
-    cmdParameters: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/data/maintenance.json
 ```
 
-This KeptnTaskDefinition defines a task that retries 3 times with a timeout of 5 minutes. The task is executed by a python script that is stored in the `functions` folder of this repository.
+This KeptnTaskDefinition defines a task that retries 3 times with a timeout of 5 minutes. The task is executed by a Python script that is stored in the `tasks` folder of this repository.
 
 ### Assign Task to KeptnApp
 
