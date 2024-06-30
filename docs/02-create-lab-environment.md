@@ -2,7 +2,7 @@
 
 ## Fork the repository
 
-Go to https://github.com/heckelmann/kyverno-keptn-workshop and fork the repository to your personal GitHub account.
+Go to [heckelmann/kyverno-keptn-workshop](https://github.com/heckelmann/kyverno-keptn-workshop) and fork the repository to your personal GitHub account.
 
 Make sure the forked repository visibility is set to `Public`.
 
@@ -11,19 +11,11 @@ Make sure the forked repository visibility is set to `Public`.
 
 ## Start GitHub CodeSpace
 
-In your fork, go to "Code" then switch to the "Codespaces" tab and click "Create codespace on main"
+In your fork, go to "Code" then switch to the "Codespaces" tab and click "Create codespace on main".
 
 ![Fork Repository](assets/02-create-codespace.png)
 
 A new window will open with the Codespace. This will take a few minutes to start.
-
-## Change Application Path
-
-To point ArgoCD and Keptn Tasks to your repository, select the gitops folder and search and replace the following:
-
-- `https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop` with your Repository URL for raw content.
-
-![Find and Replace](assets/02-find-and-replace.png)
 
 ## Start the Workshop Kubernetes Cluster
 

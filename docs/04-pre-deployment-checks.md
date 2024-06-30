@@ -26,9 +26,9 @@ metadata:
   namespace: demo-app-dev
 spec:
   retries: 3
-  timeout: "5m"
+  timeout: 5m
   python:
-    httpRef: 
+    httpRef:
       url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py
 ```
 
