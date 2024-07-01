@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kyverno/chainsaw/main/.schemas/json/test-chainsaw-v1alpha1.json
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: maintenance-window-check-dev
+spec:
+  namespace: demo-app-dev
+  steps:
+  - try:
+    - delete:
+        ref:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnApp
+          name: demo-app
+    - delete:
+        ref:
+          apiVersion: apps/v1
+          kind: Deployment
+          name: demo-app
+    - assert:
+        timeout: 1m
+        resource:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnApp
+          metadata:
+            name: demo-app
+    - assert:
+        resource:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnTask
+          spec:
+            checkType: pre
+            context:
+              appName: demo-app
+              appVersion: v1
+              objectType: App
+              taskType: pre
+              workloadName: ""
+            taskDefinition: maintenance-window-check
+          status:
+            status: Succeeded
